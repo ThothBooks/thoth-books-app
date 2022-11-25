@@ -1,0 +1,42 @@
+
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "lib": ["es2021"],
+    "allowJs": true,
+    "jsx": "react-native",
+    "noEmit": true,
+    "isolatedModules": true,
+    "strict": true,
+    "moduleResolution": "node",
+    "target": "es2021",
+    "typeRoots": [
+      "node_modules/@types",
+      "./src/typings",
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "@assets/*": ["./src/assets/*"],
+      "@components/*": ["./src/components/*"],
+      "@contexts/*": ["./src/contexts/*"],
+      "@theme/*": ["./src/theme/*"],
+      "@typings/*": ["./src/typings/*"],
+      "@routes/*": ["./src/routes/*"],
+      "@services/*": ["./src/services/*"],
+      "@screens/*": ["./src/screens/*"],
+      "@utils/*": ["./src/utils/*"],
+      "@tests/*": ["./src/tests/*"],
+      "@/*": ["./src/*"],
+    },
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true
+  },
+  "exclude": [
+    "node_modules",
+    "babel.config.js",
+    "metro.config.js",
+    "jest.config.js"
+  ]
+}
