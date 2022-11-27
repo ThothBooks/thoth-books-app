@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import IconMaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import Home from '@screens/App/Home';
 
@@ -9,17 +8,12 @@ import { AppStackRouter } from '@typings/routes';
 
 import theme from '@theme/index';
 
-import { useAuth } from '@contexts/AuthContext';
+import UploadIcon from '@components/UploadInput';
+import { ThothReader } from '@screens/App/Reader';
 
 const AppStack = createNativeStackNavigator<AppStackRouter>();
 
 export default () => {
-  const { deleteUser } = useAuth();
-
-  const onLogout = () => {
-    deleteUser();
-  };
-
   return (
     <AppStack.Navigator initialRouteName="Home">
       <AppStack.Screen
@@ -28,18 +22,27 @@ export default () => {
         options={() => ({
           animation: 'slide_from_right',
           headerShown: true,
-          headerTitle: 'ThothBooks',
+          headerTitle: '',
           headerBackVisible: false,
-          headerRight: () => (
-            <IconMaterialCommunityIcons
-              onPress={onLogout}
-              name="logout"
-              size={30}
-              color="#000"
-            />
-          ),
+          headerRight: () => <UploadIcon />,
+          headerLeft: () => <UploadIcon />,
+          headerTransparent: true,
           headerStyle: {
-            backgroundColor: theme.colors.light.primary,
+            backgroundColor: theme.colors.light.backgroundLight,
+          },
+        })}
+      />
+      <AppStack.Screen
+        name="Reader"
+        component={ThothReader}
+        options={() => ({
+          animation: 'slide_from_right',
+          headerShown: false,
+          headerBackVisible: false,
+          headerRight: () => <UploadIcon />,
+          headerTransparent: true,
+          headerStyle: {
+            backgroundColor: theme.colors.light.backgroundLight,
           },
         })}
       />

@@ -19,27 +19,29 @@ import {
   ContainerView,
   BoxInputView,
   ContainerBottomView,
-  LoginButton,
+  RegisterButton,
   LoadingIndicator,
   TitleText,
   BackSvg,
   SubTitleText,
   NoAccountText,
-  LoginText,
+  RegisterText,
 } from './styles';
 import { TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { ThemeContext } from 'styled-components/native';
 
-const Login = () => {
+const Register = () => {
   const themeContext = useContext(ThemeContext);
   const { navigate, goBack } = useNavigation();
   const { saveUser } = useAuth();
   const [isLoading, setLoading] = useState<boolean>(false);
 
   const [form] = useState<FormInputs>({
+    fullName: '',
     username: '',
     password: '',
+    confirmPassword: '',
   });
 
   const { validationSchema } = useValidationSchema();
@@ -80,17 +82,32 @@ const Login = () => {
         <TouchableOpacity onPress={() => goBack()}>
           <BackSvg />
         </TouchableOpacity>
-        <TitleText>Vamos logar no app.</TitleText>
-        <SubTitleText>Boas vidas novamente. Sentimos sua falta!</SubTitleText>
+        <TitleText>Vamos criar uma conta.</TitleText>
+        <SubTitleText>
+          Boas vidas, preencha todos os campos para se registrar.
+        </SubTitleText>
         <ContainerInput>
+          <BoxInputView>
+            <Input
+              testID="textInput:fullName"
+              name="fullName"
+              control={control}
+              param={form.fullName}
+              label="Nome completo"
+              placeholder="John O'Leitor "
+              placeholderTextColor={themeContext.colors.terciary}
+              hasError={errors?.fullName?.message ? true : false}
+              errorMessage={errors?.fullName?.message}
+            />
+          </BoxInputView>
           <BoxInputView>
             <Input
               testID="textInput:username"
               name="username"
               control={control}
               param={form.username}
-              label="E-email ou usuário ou celular"
-              placeholder="john@exemplo.com"
+              label="E-email ou celular"
+              placeholder="john@exemplo.com ou 11991919999"
               placeholderTextColor={themeContext.colors.terciary}
               hasError={errors?.username?.message ? true : false}
               errorMessage={errors?.username?.message}
@@ -110,17 +127,33 @@ const Login = () => {
               errorMessage={errors?.password?.message}
             />
           </BoxInputView>
+          <BoxInputView>
+            <Input
+              testID="textInput:confirmPassword"
+              name="confirmPassword"
+              control={control}
+              isPasswordInput={true}
+              param={form.confirmPassword}
+              label="Confirmar senha"
+              placeholder="*********"
+              placeholderTextColor={themeContext.colors.terciary}
+              hasError={errors?.confirmPassword?.message ? true : false}
+              errorMessage={errors?.confirmPassword?.message}
+            />
+          </BoxInputView>
         </ContainerInput>
         <ContainerBottomView>
           <ContainerBottomViewLink>
-            <NoAccountText>Não tem conta?</NoAccountText>
-            <TouchableOpacity onPress={() => navigate('Register')}>
-              <LoginText>Cadastre-se</LoginText>
+            <NoAccountText>Já possui conta?</NoAccountText>
+            <TouchableOpacity onPress={() => navigate('Login')}>
+              <RegisterText>Entrar</RegisterText>
             </TouchableOpacity>
           </ContainerBottomViewLink>
           {isLoading && <LoadingIndicator />}
           {!isLoading && (
-            <LoginButton onPress={handleSubmit(onSubmit)}>Entrar</LoginButton>
+            <RegisterButton onPress={handleSubmit(onSubmit)}>
+              Cadastrar
+            </RegisterButton>
           )}
         </ContainerBottomView>
       </ContainerScroll>
@@ -128,4 +161,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;

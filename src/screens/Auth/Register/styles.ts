@@ -31,7 +31,7 @@ export const BoxInputView = styled.View`
 
 export const ContainerBottomView = styled.View`
   width: 100%;
-  margin-top: 248px;
+  margin-top: 72px;
 `;
 
 export const ContainerBottomViewLink = styled.View`
@@ -48,7 +48,7 @@ export const DefaultButton = styled(Button).attrs({
   width: 100%;
 `;
 
-export const LoginButton = styled(DefaultButton).attrs((props) => ({
+export const RegisterButton = styled(DefaultButton).attrs((props) => ({
   color: props.theme.colors.primary,
 }))`
   border-radius: 15px;
@@ -73,7 +73,7 @@ export const NoAccountText = styled(Text)`
   text-align: center;
 `;
 
-export const LoginText = styled(Text)`
+export const RegisterText = styled(Text)`
   margin-bottom: 12px;
   font-size: 16px;
   font-weight: normal;
@@ -83,7 +83,7 @@ export const LoginText = styled(Text)`
 `;
 
 export const ContainerInput = styled.View`
-  margin-top: 64px;
+  margin-top: 48px;
 `;
 
 export const Input = styled(InputComponent)``;

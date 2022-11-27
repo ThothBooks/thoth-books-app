@@ -3,15 +3,17 @@
 import { Colors as colorsPaper } from 'react-native-paper';
 
 export default {
-  primary: '#ffba00',
+  primary: '#815B5B',
   primaryLight: '#ffec4d',
-  primaryDark: '#c78a00',
+  primaryDark: '#815B5B',
 
-  secondary: '#ff219e',
+  secondary: '#594545',
   secondaryLight: '#ff67cf',
   secondaryDark: '#c70070',
 
-  primaryText: '#000000',
+  terciary: '#9E7676',
+
+  primaryText: '#594545',
   secondaryText: '#ffffff',
   disabledText: '#bbbbbb',
   placeholder: '#6f6f6f',
@@ -25,9 +27,9 @@ export default {
 
   disabled: '#bbbbbb',
 
-  backgroundLight: '#f0f2f5',
+  backgroundLight: '#FFF8EA',
   backgroundSecondaryLight: '#eeeeee',
 
-  primaryStatusBar: '#ffba00',
-  secondaryStatusBar: '#c78a00',
+  primaryStatusBar: '#ffec4d',
+  secondaryStatusBar: '#815B5B',
 };

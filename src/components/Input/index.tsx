@@ -14,6 +14,7 @@ import {
   AlertText,
   LabelText,
 } from './styles';
+import { Image } from 'react-native-paper/lib/typescript/components/Avatar/Avatar';
 
 export interface Props extends Omit<TextInputProps, 'mode'> {
   inputRef?: React.RefObject<TextInputRN>;
@@ -33,6 +34,7 @@ export interface Props extends Omit<TextInputProps, 'mode'> {
   dense?: boolean;
   isPasswordInput?: boolean;
   isShowRequired?: boolean;
+  customIcon?: string;
   onChangeCustom?: (text: string) => void;
 }
 
@@ -51,6 +53,7 @@ const TextInput = ({
   isPasswordInput = false,
   isShowRequired = false,
   onChangeCustom,
+  customIcon,
   ...props
 }: Props) => {
   const [isShowPassword, setPasswordShow] = React.useState<boolean>(
